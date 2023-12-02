@@ -76,20 +76,14 @@ object Form4: TForm4
     Height = 21
     TabOrder = 3
   end
-  object edt5: TEdit
-    Left = 176
-    Top = 160
-    Width = 377
-    Height = 21
-    TabOrder = 4
-  end
   object btn1: TButton
     Left = 40
     Top = 200
     Width = 75
     Height = 25
     Caption = 'Baru'
-    TabOrder = 5
+    TabOrder = 4
+    OnClick = btn1Click
   end
   object btn2: TButton
     Left = 128
@@ -97,7 +91,8 @@ object Form4: TForm4
     Width = 75
     Height = 25
     Caption = 'Simpan'
-    TabOrder = 6
+    TabOrder = 5
+    OnClick = btn2Click
   end
   object btn3: TButton
     Left = 216
@@ -105,7 +100,8 @@ object Form4: TForm4
     Width = 75
     Height = 25
     Caption = 'Edit'
-    TabOrder = 7
+    TabOrder = 6
+    OnClick = btn3Click
   end
   object btn4: TButton
     Left = 304
@@ -113,7 +109,8 @@ object Form4: TForm4
     Width = 75
     Height = 25
     Caption = 'Hapus'
-    TabOrder = 8
+    TabOrder = 7
+    OnClick = btn4Click
   end
   object btn5: TButton
     Left = 392
@@ -121,7 +118,8 @@ object Form4: TForm4
     Width = 75
     Height = 25
     Caption = 'Batal'
-    TabOrder = 9
+    TabOrder = 8
+    OnClick = btn5Click
   end
   object btn6: TButton
     Left = 480
@@ -129,24 +127,74 @@ object Form4: TForm4
     Width = 75
     Height = 25
     Caption = 'Laporan'
-    TabOrder = 10
+    TabOrder = 9
   end
   object dbgrd1: TDBGrid
     Left = 40
     Top = 240
-    Width = 513
+    Width = 625
     Height = 120
-    TabOrder = 11
+    DataSource = ds
+    TabOrder = 10
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'Id_Detail'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Detail_nama_menu'
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Detail_harga'
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Detail_jumlah'
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Detail_total'
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Detail_invoice/bayar'
+        Width = 100
+        Visible = True
+      end>
+  end
+  object cbb1: TComboBox
+    Left = 176
+    Top = 160
+    Width = 377
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 11
+    Items.Strings = (
+      'Transfer Bank'
+      'E-Wallet'
+      'Cash')
   end
   object con: TZConnection
     ControlsCodePage = cGET_ACP
     UTF8StringsAsWideField = False
     AutoEncodeStrings = False
+    Connected = True
     HostName = 'localhost'
     Port = 3306
     Database = 'pemesanan_makanan'
@@ -158,6 +206,7 @@ object Form4: TForm4
   end
   object zqry: TZQuery
     Connection = con
+    Active = True
     SQL.Strings = (
       'select * from tb_detail')
     Params = <>

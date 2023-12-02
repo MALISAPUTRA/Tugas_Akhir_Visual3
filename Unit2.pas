@@ -31,6 +31,8 @@ var
 
 implementation
 
+uses Unit3, Unit4, Unit5, Unit6, Unit7, Unit8;
+
 {$R *.dfm}
 
 procedure TForm2.btn1Click(Sender: TObject);
